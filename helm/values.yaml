@@ -1,0 +1,8 @@
+global:
+  image: localhost:5000/javaapp
+app:
+  name: javaapp
+
+nginx:
+  name: nginx-deployment
+  label: nginx

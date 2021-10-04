@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        //This is necessary to use the gradle shadow plugin
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
+    }
+}
+
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "7.0.0"
+}
+
+group 'ashish.demo'
+version '1.0-SNAPSHOT'
+
+//These are dependencies that have to do with just the build. See: https://stackoverflow.com/a/23627293/5432315
+
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+//This lets the shadow plugin know which is the main class
+jar {
+    manifest {
+        attributes "Main-Class": "ashish.demo.MainClass"
+    }
+}
+
+build.dependsOn(jar);

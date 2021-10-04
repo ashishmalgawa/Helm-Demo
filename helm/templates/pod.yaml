@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Values.app.name }}
+  labels:
+    app: {{ .Values.app.name }}
+
+spec:
+  containers:
+    - name: javaapp
+      image: {{ .Values.global.image }}
